@@ -1,0 +1,39 @@
+body{
+	height:460px; 
+	background:-webkit-gradient(linear, 100% 0%, 100% 100%,from(#2dabd4), to(#3fefa3));/*谷歌*/ 
+}
+table{background-color: LightCyan;font-family: simsun;cellspacing:0px;cellpadding:1px;border:solid #add9c0; border-width:1px 0px 0px 1px}
+td{border:solid #add9c0; border-width:0px 1px 1px 0px; padding:1px 0px;}
+th{border:solid #add9c0; border-width:0px 1px 1px 0px; padding:1px 0px;}
+tr{color: black;}
+img{height: 80px;}
+input[type="text"]{background-color: transparent;font-family: simsun;width:100%;height:100%;font-size:15px}
+input[type="number"]{background-color: transparent;font-family: simsun;width:100%;height:100%;font-size:15px}
+input[type="text"]{background-color: transparent;font-family: simsun;width:100%;height:100%;font-size:15px}
+select{background-color: transparent;font-family: simsun;width:100%;height:100%;font-size:15px}
+input{/*color:red;*/border:1; border: 1px solid #ccc;}
+a {text-decoration:none}
+.classTable{width:100px;text-align:center;height:30px}
+.studentTable{width:75px;text-align:center;}
+.questionnaireTable{width:100px;text-align:center;}
+.questionTable{width:400px;text-align:center;}
+.answerResultTable{width:400px;text-align:center;}
+.addQuestionnaireTable{width:100px;text-align:center;width:50px;height:30px}
+.giftTable{width:195px;text-align:center;height:30px}
+.questionnaireStudentTable{width:150px;text-align:center;height:30px}
+.orderHistoryTable{width:150px;text-align:center;height:30px}
+.announceTable{width:200px;text-align:center;height:20px}
+/* 渐变色 */
+.linear{ 
+	width:100%; 
+	height:600px; 
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=##15A216,endColorStr=#fafafa); /*IE*/ 
+	background:-moz-linear-gradient(top,#15A216,#fafafa);/*火狐*/ 
+	background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#15A216), to(#fafafa));/*谷歌*/ 
+ 
+	
+	background-image: -webkit-gradient(linear,left bottom,left top,color-start(0, #15A216),color-stop(1, #fafafa));/* Safari & Chrome*/
+	filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#15A216', endColorstr='#fafafa'); /*IE6 & IE7*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#15A216', endColorstr='#fafafa')"; /* IE8 */
+ 
+} 

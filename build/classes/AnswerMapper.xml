@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.AnswerMapper">
+
+<!--
+id:唯一标识
+resultType:返回类型
+-->
+	<select id="selectAnswerById" resultType="com.questionnaire.bean.Answer">
+		select * from answer_table where id = #{id}
+	</select>
+	
+	<select id="selectCountByQuestionnaireIdAndQuestionIdAndOption" resultType="java.lang.Integer">
+		select count(*) from answer_table where ownerQuestionnaireId = #{ownerQuestionnaireId} and ownerQuestionId = #{ownerQuestionId} and `option` = #{option}
+	</select>
+	
+	<select id="selectAllAnswerByQuestionnaireId" resultType="com.questionnaire.bean.Answer">
+		select distinct ownerQuestionId from answer_table where ownerQuestionnaireId = #{ownerQuestionnaireId}
+	</select>
+	
+	<insert id="insertAnswer" parameterType="com.questionnaire.bean.Answer" useGeneratedKeys="true" keyProperty="id" >
+        insert into answer_table(id,ownerQuestionnaireId,ownerQuestionId,ownerQuestionHeading,ownerStudentId,`option`,answer) values(#{id},#{ownerQuestionnaireId},#{ownerQuestionId},#{ownerQuestionHeading},#{ownerStudentId},#{option},#{answer})
+    </insert>
+	
+	<!--删除-->
+    <delete id="deleteAnswerById" parameterType="int" >
+        delete from answer_table where id = #{id}
+    </delete>
+    <!--改-->
+    <update id="updateAnswerById" parameterType="com.questionnaire.bean.Answer">
+        update answer_table set id = #{id},ownerQuestionId = #{ownerQuestionId},ownerStudentId=#{ownerStudentId},answer = #{answer} WHERE id = #{id}
+    </update>
+
+	<select id="selectAllAnswerByQuestionnaireIdAndStudentId" resultType="com.questionnaire.bean.Answer">
+	select * from answer_table where ownerQuestionnaireId = #{ownerQuestionnaireId} and ownerStudentId = #{ownerStudentId}
+	</select>
+
+</mapper>

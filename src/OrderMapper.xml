@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.OrderMapper">
+
+<!--
+id:唯一标识
+resultType:返回类型
+-->
+	<select id="selectAllOrder" resultType="com.questionnaire.bean.Order">
+		select * from order_table
+	</select>
+	
+	<select id="selectOrderById" resultType="com.questionnaire.bean.Order">
+		select * from order_table where id = #{id}
+	</select>
+	
+	<select id="selectOrderListByStudentId" resultType="com.questionnaire.bean.Order">
+		select * from order_table where studentId = #{studentId}
+	</select>
+	
+	<insert id="insertOrder" parameterType="com.questionnaire.bean.Order" useGeneratedKeys="true" keyProperty="id" >
+        insert into order_table(id,studentId,giftId,giftName,address,status,submitTime) values(#{id},#{studentId},#{giftId},#{giftName},#{address},#{status},#{submitTime})
+    </insert>
+	
+	<!--删除-->
+    <delete id="deleteOrderById" parameterType="int" >
+        delete from gift_table where id = #{id}
+    </delete>
+    <!--改-->
+    <update id="UpdateOrderByIdSubmit" parameterType="com.questionnaire.bean.Order">
+        update gift_table set score = #{score},giftName=#{giftName},giftDescription=#{giftDescription},giftSrc=#{giftSrc} WHERE id = #{id}
+    </update>
+    
+     <update id="modifyOrderStatusById" parameterType="com.questionnaire.bean.Order">
+       update order_table set status = #{status} WHERE id = #{id}
+    </update>
+    
+</mapper>

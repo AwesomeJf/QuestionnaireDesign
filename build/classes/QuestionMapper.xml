@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.QuestionMapper">
+
+<!--
+id:唯一标识
+resultType:返回类型
+-->
+	<select id="selectQuestionListById" resultType="com.questionnaire.bean.Question">
+		select * from question_table where ownerQuestionnaireId = #{ownerQuestionnaireId}
+	</select>
+	
+	<insert id="insertQuestion" parameterType="com.questionnaire.bean.Question" useGeneratedKeys="true" keyProperty="id" >
+        insert into Question_table(id,ownerQuestionnaireId,ownerQuestionnaireTitle,questionHeading,questionType,optionA,optionB,optionC,optionD) values(#{id},#{ownerQuestionnaireId},#{ownerQuestionnaireTitle},#{questionHeading},#{questionType},#{optionA},#{optionB},#{optionC},#{optionD})
+    </insert>
+	
+	<!--删除-->
+    <delete id="deleteQuestionById" parameterType="int" >
+        delete from question_table where id = #{id}
+    </delete>
+    <!--改-->
+    <update id="UpdateQuestionByIdSubmit" parameterType="com.questionnaire.bean.Question">
+        update question_table set className = #{className},description=#{description} WHERE id = #{id}
+    </update>
+
+	<select id="selectAllQuestion" resultType="com.questionnaire.bean.Question">
+	select * from question_table
+	</select>
+
+</mapper>

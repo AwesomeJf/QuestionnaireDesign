@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.StudentMapper">
+
+<!--
+id:唯一标识
+resultType:返回类型
+-->
+	<!--登录验证  -->
+	<select id="loginStu" resultType="com.questionnaire.bean.Student">
+	select * from student_table where account = #{account} and password = #{password}
+	</select>
+	
+	<!--修改学生  -->
+	<select id="selectStudentById" resultType="com.questionnaire.bean.Student">
+	select * from student_table where id = #{id}
+	</select>
+	
+	<!--登返回用户名  -->
+	<select id="selectInfoByAccount" resultType="com.questionnaire.bean.Student">
+	select * from student_table where account = #{account} and password = #{password}
+	</select>
+	
+	<insert id="insertEmptyStudent" parameterType="com.questionnaire.bean.Student" useGeneratedKeys="true" keyProperty="id" >
+        insert into student_table(id,ownerClassId,phoneNumber,score,studyNumber,account,password,name,sex,address,isAdmin,registerTime) values(#{id},#{ownerClassId},#{phoneNumber},#{score},#{studyNumber},#{account},#{password},#{name},#{sex},#{address},#{isAdmin},#{registerTime})
+    </insert>
+	
+	<!--删除学生-->
+    <delete id="deleteStudentById" parameterType="int" >
+        delete from student_table where id = #{id}
+    </delete>
+    <!--改-->
+    
+    
+    <update id="UpdateStudentScoreById" parameterType="com.questionnaire.bean.Student">
+        update student_table set score = #{score} WHERE id = #{id}
+    </update>
+    <update id="UpdateStudentByIdSubmit" parameterType="com.questionnaire.bean.Student">
+        update student_table set ownerClassId = #{ownerClassId},phoneNumber = #{phoneNumber},score = #{score},studyNumber = #{studyNumber}, account= #{account},password = #{password}, name= #{name},sex = #{sex},address = #{address},isAdmin = #{isAdmin},registerTime = #{registerTime}  WHERE id = #{id}
+    </update>
+
+	<select id="selectAllStudent" resultType="com.questionnaire.bean.Student">
+	select * from student_table
+	</select>
+
+</mapper>

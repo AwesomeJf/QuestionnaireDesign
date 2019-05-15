@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.AnnounceMapper">
+
+<!--
+id:唯一标识
+resultType:返回类型
+-->
+	<select id="selectAllAnnounce" resultType="com.questionnaire.bean.Announce">
+		select * from announce_table
+	</select>
+	
+	<select id="selectAnnounceById" resultType="com.questionnaire.bean.Announce">
+		select * from announce_table where id = #{id}
+	</select>
+	
+	<insert id="insertAnnounce" parameterType="com.questionnaire.bean.Announce" useGeneratedKeys="true" keyProperty="id" >
+        insert into announce_table(id,sponsorId,content,submitTime) values(#{id},#{sponsorId},#{content},#{submitTime})
+    </insert>
+	
+	<!--删除-->
+    <delete id="deleteAnnounceById" parameterType="int" >
+        delete from announce_table where id = #{id}
+    </delete>
+    <!--改-->
+    <update id="UpdateAnnounceByIdSubmit" parameterType="com.questionnaire.bean.Announce">
+        update announce_table set content = #{content} WHERE id = #{id}
+    </update>
+</mapper>

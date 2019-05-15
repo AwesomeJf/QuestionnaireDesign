@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.RegClassMapper">
+
+<!--
+id:唯一标识
+resultType:返回类型
+-->
+	<select id="selectClassById" resultType="com.questionnaire.bean.RegClass">
+		select * from class_table where id = #{id}
+	</select>
+	
+	<insert id="insertEmptyClass" parameterType="com.questionnaire.bean.RegClass" useGeneratedKeys="true" keyProperty="id" >
+        insert into class_table(id,className,description) values(#{id},#{className},#{description})
+    </insert>
+	
+	<!--删除-->
+    <delete id="deleteClassById" parameterType="int" >
+        delete from class_table where id = #{id}
+    </delete>
+    <!--改-->
+    <update id="UpdateClassByIdSubmit" parameterType="com.questionnaire.bean.RegClass">
+        update class_table set className = #{className},description=#{description} WHERE id = #{id}
+    </update>
+
+	<select id="selectAllRegClass" resultType="com.questionnaire.bean.RegClass">
+	select * from class_table
+	</select>
+
+</mapper>
